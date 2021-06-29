@@ -28,14 +28,14 @@
 
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-place-of-worship"></i>
                 </div>
-                <div class="sidebar-brand-text mx-1">CRMS</div>
+                <div class="sidebar-brand-text mx-3">CRMS</div>
             </a>
 
             <!-- Divider -->
@@ -79,16 +79,17 @@
                         </div>
                     </div>
                 </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/finances">
+                        <i class="fas fa-fw fa-coins"></i>
+                        <span>Church Finance</span>
+                    </a>
+                </li>
             @endcan
 
-        <!--<li class="nav-item">
-                <a class="nav-link" to="/accounts">
-                    <i class="fas fa-fw fa-coins"></i>
-                    <span>Accountings</span>
-                </a>
-            </li>-->
-
-            <!-- Nav Item - Pages Collapse Menu -->
+        <!-- Nav Item - Pages Collapse Menu -->
             @can('isLeader')
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#management"
@@ -100,9 +101,14 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Central Registration:</h6>
                             <a class="collapse-item" href="/members">Members Registry</a>
-                            {{--                        <a class="collapse-item" href="/elders">Elders Register</a>--}}
                         </div>
                     </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/records">
+                        <i class="fas fa-fw fa-coins"></i>
+                        <span>Church Finance Records</span>
+                    </a>
                 </li>
             @endcan
 
@@ -153,20 +159,20 @@
                     </button>
 
                     <!-- Topbar Search -->
-{{--                    <form--}}
-{{--                        class="d-none d-sm-inline-block form-inline mr-auto mr-md-3 my-2 my-md-0 mw-100 navbar-search">--}}
-{{--                        <div class="input-group">--}}
-{{--                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."--}}
-{{--                                   aria-label="Search" aria-describedby="basic-addon2">--}}
-{{--                            <div class="input-group-append">--}}
-{{--                                <button class="btn btn-primary" type="button">--}}
-{{--                                    <i class="fas fa-search fa-sm"></i>--}}
-{{--                                </button>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </form>--}}
+                {{--                    <form--}}
+                {{--                        class="d-none d-sm-inline-block form-inline mr-auto mr-md-3 my-2 my-md-0 mw-100 navbar-search">--}}
+                {{--                        <div class="input-group">--}}
+                {{--                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."--}}
+                {{--                                   aria-label="Search" aria-describedby="basic-addon2">--}}
+                {{--                            <div class="input-group-append">--}}
+                {{--                                <button class="btn btn-primary" type="button">--}}
+                {{--                                    <i class="fas fa-search fa-sm"></i>--}}
+                {{--                                </button>--}}
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                    </form>--}}
 
-                    <!-- Topbar Navbar -->
+                <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -185,7 +191,12 @@
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span
                                     class="mr-2 d-none d-lg-inline text-gray-600 small">Hello, {{ Auth::user()->firstName }}</span>
-                                <img class="img-profile rounded-circle" src="/img/profile.png">
+                                @if(Auth::user()->gender === 'male')
+                                    <img class="img-profile rounded-circle" src="/img/male.png">
+                                @else
+                                    <img class="img-profile rounded-circle" src="/img/female.png">
+                                @endif
+
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -194,10 +205,10 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
+                                {{--                                <a class="dropdown-item" href="#">--}}
+                                {{--                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>--}}
+                                {{--                                    Settings--}}
+                                {{--                                </a>--}}
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

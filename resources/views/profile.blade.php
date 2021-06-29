@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <div>
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5">
                 @if (session('status'))
@@ -18,11 +18,28 @@
         <div class="row p-2">
             <div class="col-md-5">
                 <div class="card shadow mb-4">
-                    <div class="card-header text-uppercase">
-                        <h5 class="m-0 font-weight-bold text-primary">{{$user->firstName}} {{$user->sirName}}</h5>
-                    </div>
-                    <div class="card-body">
-
+                    <div class="card-body text-center">
+                        <div class="rounded-circle mb-4 text-center">
+                            @if(Auth::user()->gender === 'male')
+                                <img src="/img/male.png" alt="" class="img-fluid w-50">
+                            @else
+                                <img src="/img/female.png" alt="" class="img-fluid w-50">
+                            @endif
+                        </div>
+                        <h1 class="m-0 font-weight-bold text-primary">{{$user->firstName}} {{$user->sirName}}</h1>
+                        <h5 class="m-0">{{$user->email}}</h5>
+                        <h5 class="m-0">{{$user->mobile}}</h5>
+                        <h5 class="m-0">
+                            @if($user->role === 'admin')
+                                Administrator
+                            @elseif($user->role === 'manager')
+                                HQ Manager
+                            @elseif($user->role === 'pastor')
+                                Senior Pastor
+                            @else
+                                Church Member
+                            @endif
+                        </h5>
                     </div>
                 </div>
             </div>

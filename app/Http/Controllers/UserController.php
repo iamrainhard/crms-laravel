@@ -62,22 +62,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request['mobile'] = phoneNumber::make($request['mobile'], 'TZ')->formatInternational();
         $data = $request->validate([
             'firstName' => 'required|string|min:3|max:255|alpha',
             'sirName' => 'required|string|min:3|max:255|alpha',
             'email' => 'required|string|email|max:255|unique:users',
-            'mobile' => 'required|string|phone:TZ|max:255|unique:users,',
+            'mobile' => 'required|string|phone:TZ|max:255|unique:users',
             'gender' => 'required|string',
             'church_id' => 'string',
             'password' => 'required|string|min:8|confirmed',
             'role' => 'required',
         ]);
-
+//        dd($request);
         User::create([
             'firstName' => $data['firstName'],
             'sirName' => $data['sirName'],
             'email' => $data['email'],
-            'mobile' => phoneNumber::make($data['mobile'], 'TZ')->formatInternational(),
+            'mobile' => $data['mobile'],
             'gender' => $data['gender'],
             'password' => Hash::make($data['firstName']),
             'role' => $data['role'],
@@ -121,6 +122,8 @@ class UserController extends Controller
     {
 
         $user = User::findOrFail($id);
+        $request['mobile'] = phoneNumber::make($request['mobile'], 'TZ')->formatInternational();
+
         if (empty($request['password'])) {
             $data = $request->validate([
                 'firstName' => 'required|string|alpha|min:3|max:255',
@@ -140,11 +143,9 @@ class UserController extends Controller
             ]);
         }
         $data['church_id'] = $request['church_id'];
-        $request['mobile'] = phoneNumber::make($request['mobile'], 'TZ')->formatInternational();
         if (empty($data['password'])) {
             $user->update($request->except('password'));
         } else {
-            $data['mobile'] = phoneNumber::make($data['mobile'], 'TZ')->formatInternational();
             $data['password'] = Hash::make($data['password']);
             $user->update($data);
         }
@@ -174,6 +175,8 @@ class UserController extends Controller
     {
 //        dd($request);
         $user = User::findOrFail($id);
+        $request['mobile'] = phoneNumber::make($request['mobile'], 'TZ')->formatInternational();
+
         if (empty($request['password'])) {
             $data = $request->validate([
                 'firstName' => 'required|string|alpha|min:3|max:255',
@@ -190,11 +193,10 @@ class UserController extends Controller
                 'password' => 'sometimes|string|min:8|confirmed',
             ]);
         }
-        $request['mobile'] = phoneNumber::make($request['mobile'], 'TZ')->formatInternational();
+
         if (empty($data['password'])) {
             $user->update($request->except('password'));
         } else {
-            $data['mobile'] = phoneNumber::make($data['mobile'], 'TZ')->formatInternational();
             $data['password'] = Hash::make($data['password']);
             $user->update($data);
         }
