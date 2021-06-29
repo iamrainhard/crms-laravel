@@ -87,7 +87,6 @@
                                     <select name="role" id="role"
                                             class="form-control form-control-user @error('role') is-invalid @enderror"
                                             autocomplete="role" autofocus>
-                                        <option value="pastor">Senior Pastor</option>
                                         <option value="elder">Church Elder</option>
                                         <option value="member" selected>Church Member</option>
                                     </select>

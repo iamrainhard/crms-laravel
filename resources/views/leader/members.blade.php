@@ -33,7 +33,7 @@
                             <div class="row justify-content-end">
                                 <div class="col-sm-12 col-md-6"></div>
                                 <div class="col-sm-12 col-md-6">
-                                    <form action="{{ route('users.index') }}" method="GET" role="search"
+                                    <form action="{{ route('members.index') }}" method="GET" role="search"
                                           class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 table-search p-2">
                                         <div class="input-group">
                                             <input name="term" id="term" type="text"

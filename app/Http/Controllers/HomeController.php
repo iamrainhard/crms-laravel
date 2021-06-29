@@ -55,7 +55,7 @@ class HomeController extends Controller
         $managers = $searchM->orderBy('firstName', 'ASC')->paginate(10);
 //        dd($managers);
         // For Pastor Dashboard
-        $totalChurchMembers = User::where('church_id', $user->church_id)->count();
+        $totalChurchMembers = User::where('church_id', $user->church_id)->where('role','member')->count();
         $totalChurchElders = User::where('church_id', $user->church_id)->where('role','elder')->count();
         $churchElders = User::where('church_id', $user->church_id)->where('role','elder')->orderBy('firstName', 'ASC')->paginate(10);
         $myPastor = User::where('church_id', $user->church_id)->where('role', 'pastor')->first();
