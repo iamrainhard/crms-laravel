@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Propaganistas\LaravelPhone\PhoneNumber;
 
 class MemberController extends Controller
 {
@@ -62,7 +63,7 @@ class MemberController extends Controller
             'firstName' => 'required|string|min:3|max:255|alpha',
             'sirName' => 'required|string|min:3|max:255|alpha',
             'email' => 'required|string|email|max:255|unique:users',
-            'mobile' => 'required|string|max:255|unique:users',
+            'mobile' => 'required|string|phone:TZ|max:255|unique:users',
             'gender' => 'required|string',
             'church_id' => 'string',
             'password' => 'required|string|min:8|confirmed',
@@ -73,7 +74,7 @@ class MemberController extends Controller
             'firstName' => $data['firstName'],
             'sirName' => $data['sirName'],
             'email' => $data['email'],
-            'mobile' => $data['mobile'],
+            'mobile' => phoneNumber::make($data['mobile'],'TZ')->formatInternational(),
             'gender' => $data['gender'],
             'password' => Hash::make($data['firstName']),
             'role' => $data['role'],
@@ -124,6 +125,7 @@ class MemberController extends Controller
                 'firstName' => 'required|string|alpha|min:3|max:255',
                 'sirName' => 'required|string|alpha|min:3|max:255',
                 'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+                'mobile' => 'required|string|phone:TZ|max:255|unique:users,mobile,' . $user->id,
                 'role' => 'required'
             ]);
         } else {
@@ -131,14 +133,17 @@ class MemberController extends Controller
                 'firstName' => 'required|string|alpha|min:3|max:255',
                 'sirName' => 'required|string|alpha|min:3|max:255',
                 'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+                'mobile' => 'required|string|phone:TZ|max:255|unique:users,mobile,' . $user->id,
                 'role' => 'required',
                 'password' => 'sometimes|string|min:8|confirmed',
             ]);
         }
         $data['church_id'] = $request['church_id'];
+        $request['mobile'] = phoneNumber::make($request['mobile'], 'TZ')->formatInternational();
         if (empty($data['password'])) {
             $user->update($request->except('password'));
         } else {
+            $data['mobile'] = phoneNumber::make($data['mobile'], 'TZ')->formatInternational();
             $data['password'] = Hash::make($data['password']);
             $user->update($data);
         }

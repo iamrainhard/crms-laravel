@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Church;
 use App\Models\Region;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class ChurchController extends Controller
 {
