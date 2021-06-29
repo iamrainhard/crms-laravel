@@ -1,0 +1,122 @@
+[
+    {
+        "id": "1",
+        "region": "Dar es Salaam"
+    },
+    {
+        "id": "2",
+        "region": "Arusha"
+    },
+    {
+        "id": "3",
+        "region": "Dodoma"
+    },
+    {
+        "id": "4",
+        "region": "Mwanza"
+    },
+    {
+        "id": "5",
+        "region": "Zanzibar Urban/West"
+    },
+    {
+        "id": "6",
+        "region": "Rukwa"
+    },
+    {
+        "id": "7",
+        "region": "Kilimanjaro"
+    },
+    {
+        "id": "8",
+        "region": "Iringa"
+    },
+    {
+        "id": "9",
+        "region": "Mara"
+    },
+    {
+        "id": "10",
+        "region": "Ruvuma"
+    },
+    {
+        "id": "11",
+        "region": "Katavi"
+    },
+    {
+        "id": "12",
+        "region": "Singida"
+    },
+    {
+        "id": "13",
+        "region": "Pemba South"
+    },
+    {
+        "id": "14",
+        "region": "Morogoro"
+    },
+    {
+        "id": "15",
+        "region": "Njombe"
+    },
+    {
+        "id": "16",
+        "region": "Tanga"
+    },
+    {
+        "id": "17",
+        "region": "Lindi"
+    },
+    {
+        "id": "18",
+        "region": "Mtwara"
+    },
+    {
+        "id": "19",
+        "region": "Shinyanga"
+    },
+    {
+        "id": "20",
+        "region": "Kagera"
+    },
+    {
+        "id": "21",
+        "region": "Manyara"
+    },
+    {
+        "id": "22",
+        "region": "Tabora"
+    },
+    {
+        "id": "23",
+        "region": "Pemba North"
+    },
+    {
+        "id": "24",
+        "region": "Kigoma"
+    },
+    {
+        "id": "25",
+        "region": "Pwani"
+    },
+    {
+        "id": "26",
+        "region": "Geita"
+    },
+    {
+        "id": "27",
+        "region": "Simiyu"
+    },
+    {
+        "id": "28",
+        "region": "Zanzibar North"
+    },
+    {
+        "id": "29",
+        "region": "Mbeya"
+    },
+    {
+        "id": "30",
+        "region": "Zanzibar Central/South"
+    }
+]

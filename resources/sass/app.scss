@@ -1,0 +1,60 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap');
+
+
+// Variables
+@import 'variables';
+$fa-font-path: "../webfonts";
+
+
+// Bootstrap
+@import '~startbootstrap-sb-admin-2/scss/sb-admin-2';
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~startbootstrap-sb-admin-2/vendor/datatables/dataTables.bootstrap4.min.css';
+
+
+.table-search{
+    width: 25rem;
+}
+.bg-login-image {
+    background: url('https://source.unsplash.com/3apYxXtVO4I/600x800');
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-register-image {
+    background: url('https://source.unsplash.com/3apYxXtVO4I/600x800');
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-password-image {
+    background: url('https://source.unsplash.com/3apYxXtVO4I/600x800');
+    background-position: center;
+    background-size: cover;
+}
+
+$blue: #1868FD;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #F75E52;
+$orange: #f6993f;
+$yellow: #febe1e;
+$green: #59C9A5;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+$white: #ffffff;
+$black: #15262e;
+$primary: #1868FD;
+$warning: #febe1e;
+$danger: #F75E52;
+
+body {
+    font-family: "Open Sans";
+}
+
+
