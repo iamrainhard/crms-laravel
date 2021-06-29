@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Church;
+use App\Models\FinanceRecord;
 use App\Models\Region;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -58,6 +59,7 @@ class HomeController extends Controller
         $totalChurchElders = User::where('church_id', $user->church_id)->where('role','elder')->count();
         $churchElders = User::where('church_id', $user->church_id)->where('role','elder')->orderBy('firstName', 'ASC')->paginate(10);
         $myPastor = User::where('church_id', $user->church_id)->where('role', 'pastor')->first();
+        $totalChurchCollection = FinanceRecord::where('church_id', $user->church_id)->sum('amount');
 
 
 
@@ -68,7 +70,7 @@ class HomeController extends Controller
         }elseif ($user->role === 'manager') {
             return view('manager.dashboard', compact('totalMembers','totalChurches','totalPastors','churchPercent','managers'));
         }elseif ($user->role === 'leader' || $user->role === 'pastor') {
-            return view('leader.dashboard', compact('totalChurchMembers', 'totalChurchElders','churchElders'));
+            return view('leader.dashboard', compact('totalChurchMembers', 'totalChurchElders','churchElders','totalChurchCollection'));
         }else{
             return view('home',compact('totalChurchMembers','myPastor'));
         }

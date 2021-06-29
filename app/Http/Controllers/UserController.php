@@ -85,7 +85,7 @@ class UserController extends Controller
             'church_id' => $data['church_id'],
         ]);
 
-        return redirect('/users')->with('message', "User Registered Successful!");
+        return redirect('/users')->with('status', "User Registered Successful!");
     }
 
     /**
@@ -142,14 +142,19 @@ class UserController extends Controller
                 'password' => 'sometimes|string|min:8|confirmed',
             ]);
         }
-        $data['church_id'] = $request['church_id'];
+        if ($request['church_id'] === null){
+            $data['church_id'] = $user->church_id;
+        }else{
+            $data['church_id'] = $request['church_id'];
+        }
+
         if (empty($data['password'])) {
             $user->update($request->except('password'));
         } else {
             $data['password'] = Hash::make($data['password']);
             $user->update($data);
         }
-        return redirect('/users')->with('message', 'User Updated Successful!');
+        return redirect('/users')->with('status', 'User Updated Successful!');
     }
 
     /**
@@ -200,7 +205,7 @@ class UserController extends Controller
             $data['password'] = Hash::make($data['password']);
             $user->update($data);
         }
-        return redirect('/profile')->with('message', 'User Profile Updated Successful!');
+        return redirect('/profile')->with('status', 'User Profile Updated Successful!');
 
     }
 }

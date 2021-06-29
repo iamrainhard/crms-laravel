@@ -138,7 +138,11 @@ class MemberController extends Controller
                 'password' => 'sometimes|string|min:8|confirmed',
             ]);
         }
-        $data['church_id'] = $request['church_id'];
+        if ($request['church_id'] === null){
+            $data['church_id'] = $user->church_id;
+        }else{
+            $data['church_id'] = $request['church_id'];
+        }
         $request['mobile'] = phoneNumber::make($request['mobile'], 'TZ')->formatInternational();
         if (empty($data['password'])) {
             $user->update($request->except('password'));

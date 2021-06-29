@@ -4,8 +4,8 @@
     <div>
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+            {{--            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i--}}
+            {{--                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>--}}
         </div>
 
         <div class="row">
@@ -116,26 +116,34 @@
                                                    style="width: 100%;">
                                                 <thead>
                                                 <tr role="row">
-                                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                    <th class="sorting sorting_asc" tabindex="0"
+                                                        aria-controls="dataTable"
                                                         rowspan="1" colspan="1" aria-sort="ascending"
                                                         aria-label="Name: activate to sort column descending"
                                                         style="width: 161px;">
                                                         Full Name
                                                     </th>
-                                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                        colspan="1" aria-label="Position: activate to sort column ascending"
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1"
+                                                        colspan="1"
+                                                        aria-label="Position: activate to sort column ascending"
                                                         style="width: 248px;">Email Address
                                                     </th>
-                                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                        colspan="1" aria-label="Office: activate to sort column ascending"
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1"
+                                                        colspan="1"
+                                                        aria-label="Office: activate to sort column ascending"
                                                         style="width: 114px;">Phone Number
                                                     </th>
-                                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1"
                                                         colspan="1" aria-label="Age: activate to sort column ascending"
                                                         style="width: 51px;">Gender
                                                     </th>
-                                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                        colspan="1" aria-label="Salary: activate to sort column ascending"
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1"
+                                                        colspan="1"
+                                                        aria-label="Salary: activate to sort column ascending"
                                                         style="width: 97px;">Registered On
                                                     </th>
                                                 </tr>
@@ -159,6 +167,12 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        @else
+                            <div class="row justify-content-center">
+                                <div class="alert alert-danger col-md-6 text-center">
+                                    <h6>No Data Found!</h6>
                                 </div>
                             </div>
                     </div>
