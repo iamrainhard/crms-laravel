@@ -115,7 +115,7 @@
                                 <div class="form-group" id="churchIdDiv">
                                     <select name="church_id" id="church_id"
                                             class="form-control form-control-user @error('church_id') is-invalid @enderror"
-                                            autocomplete="role" autofocus>
+                                             autofocus>
                                         <option value="" selected disabled>Select the User's Church</option>
                                     </select>
                                     @error('role')

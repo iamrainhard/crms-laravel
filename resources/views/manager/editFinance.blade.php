@@ -31,6 +31,20 @@
                                 </span>
                                 @enderror
                             </div>
+                            <div class="form-group">
+                                <input type="number"
+                                       class="form-control form-control-user @error('dividends') is-invalid @enderror"
+                                       id="dividends" name="dividends" value="{{ $finance->dividends}}" required
+                                       autocomplete="dividends"
+                                       autofocus aria-describedby="emailHelp"
+                                       placeholder="Enter Finance Dividends...">
+
+                                @error('dividends')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
                             <div class="d-flex justify-content-center mt-2">
                                 <button class="btn btn-primary btn-user" type="submit">Submit</button>
                             </div>

@@ -74,9 +74,9 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Total Collections
+                                    Total Collections (Yearly)
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$totalChurchCollection}}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$yearlyCollection}}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-coins fa-2x text-gray-300"></i>
@@ -160,6 +160,58 @@
                                 </div>
                             </div>
                         @endif
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold text-primary">Church Collection Summary</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-bordered dataTable" id="dataTable" width="100%"
+                                               cellspacing="0" role="grid" aria-describedby="dataTable_info"
+                                               style="width: 100%;">
+                                            <thead>
+                                            <tr role="row">
+                                                <th class="sorting sorting_asc" tabindex="0"
+                                                    aria-controls="dataTable"
+                                                    rowspan="1" colspan="1" aria-sort="ascending"
+                                                    aria-label="Name: activate to sort column descending"
+                                                    style="width: 161px;">
+                                                    Description
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                    rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Position: activate to sort column ascending"
+                                                    style="width: 248px;">Total Amount
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>This Week Collection</td>
+                                                <td>{{$weeklyCollection}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>This Month Collection</td>
+                                                <td>{{$monthlyCollection}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>This Year Collection</td>
+                                                <td>{{$yearlyCollection}}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -65,31 +65,18 @@
                 </div>
             </div>
 
-            <!-- Regions With Churches Percentage Card -->
             <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-info shadow h-100 py-2">
+                <div class="card border-left-success shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Regions With
-                                    Churches
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Total Collections (Yearly)
                                 </div>
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col-auto">
-                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">%
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="progress progress-sm mr-2">
-                                            <div class="progress-bar bg-info" role="progressbar"
-                                                 style="" aria-valuenow=""
-                                                 aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$yearlyCollection}}</div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                <i class="fas fa-coins fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -97,6 +84,136 @@
             </div>
 
 
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-xl-8 col-lg-8">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">List of All Church Elders</h6>
+                    </div>
+                    <div class="card-body">
+                        @if($churchElders->isNotEmpty())
+                            <div class="table-responsive">
+                                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-bordered dataTable" id="dataTable" width="100%"
+                                                   cellspacing="0" role="grid" aria-describedby="dataTable_info"
+                                                   style="width: 100%;">
+                                                <thead>
+                                                <tr role="row">
+                                                    <th class="sorting sorting_asc" tabindex="0"
+                                                        aria-controls="dataTable"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending"
+                                                        style="width: 161px;">
+                                                        Full Name
+                                                    </th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1"
+                                                        colspan="1"
+                                                        aria-label="Position: activate to sort column ascending"
+                                                        style="width: 248px;">Email Address
+                                                    </th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1"
+                                                        colspan="1"
+                                                        aria-label="Office: activate to sort column ascending"
+                                                        style="width: 114px;">Phone Number
+                                                    </th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1"
+                                                        colspan="1" aria-label="Age: activate to sort column ascending"
+                                                        style="width: 51px;">Gender
+                                                    </th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1"
+                                                        colspan="1"
+                                                        aria-label="Salary: activate to sort column ascending"
+                                                        style="width: 97px;">Registered On
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($churchElders as $churchElder)
+                                                    <tr class="odd">
+                                                        <td class="sorting_1">{{$churchElder->firstName}} {{$churchElder->sirName}}</td>
+                                                        <td>{{$churchElder->email}}</td>
+                                                        <td>{{$churchElder->mobile}}</td>
+                                                        <td>{{$churchElder->gender}}</td>
+                                                        <td>
+                                                            {{date('d M Y', strtotime($churchElder->created_at))}}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                            <div class="d-flex justify-content-center">
+                                                {{ $churchElders->appends(['sort' => 'name'])->links() }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold text-primary">Church Collection Summary</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-bordered dataTable" id="dataTable" width="100%"
+                                               cellspacing="0" role="grid" aria-describedby="dataTable_info"
+                                               style="width: 100%;">
+                                            <thead>
+                                            <tr role="row">
+                                                <th class="sorting sorting_asc" tabindex="0"
+                                                    aria-controls="dataTable"
+                                                    rowspan="1" colspan="1" aria-sort="ascending"
+                                                    aria-label="Name: activate to sort column descending"
+                                                    style="width: 161px;">
+                                                    Description
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                    rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="Position: activate to sort column ascending"
+                                                    style="width: 248px;">Total Amount
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>This Week Collection</td>
+                                                <td>{{$weeklyCollection}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>This Month Collection</td>
+                                                <td>{{$monthlyCollection}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>This Year Collection</td>
+                                                <td>{{$yearlyCollection}}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

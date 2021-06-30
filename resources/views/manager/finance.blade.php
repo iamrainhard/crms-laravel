@@ -39,6 +39,22 @@
 
                                         @error('type')
                                         <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="number"
+                                               class="form-control form-control-user @error('dividends') is-invalid @enderror"
+                                               id="dividends" name="dividends" value="{{ old('dividends')}}" required
+                                               autocomplete="dividends"
+                                               autofocus aria-describedby="emailHelp"
+                                               placeholder="Enter Finance Dividends...">
+
+                                        @error('dividends')
+                                        <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                         @enderror
@@ -96,6 +112,12 @@
                                                 style="width: 161px;">
                                                 Finance Type
                                             </th>
+                                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                rowspan="1" colspan="1" aria-sort="ascending"
+                                                aria-label="Name: activate to sort column descending"
+                                                style="width: 161px;">
+                                                Dividends
+                                            </th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
                                                 style="width: 248px;">Created On
@@ -110,6 +132,7 @@
                                         @foreach($finances as $finance)
                                             <tr class="odd">
                                                 <td class="sorting_1">{{$finance->type}}</td>
+                                                <td class="sorting_1">{{$finance->dividends}}%</td>
                                                 <td>{{date('d M Y', strtotime($finance->created_at))}}</td>
                                                 <td>
                                                     <a href="finances/{{ $finance->id }}/edit"

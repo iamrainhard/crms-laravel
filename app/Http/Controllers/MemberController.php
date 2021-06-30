@@ -70,6 +70,8 @@ class MemberController extends Controller
             'role' => 'required',
         ]);
 
+        $data['church_id'] = Auth::user()->church_id;
+
         User::create([
             'firstName' => $data['firstName'],
             'sirName' => $data['sirName'],

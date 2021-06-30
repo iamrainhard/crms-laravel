@@ -67,6 +67,10 @@
                                                 style="width: 248px;">Senior Pastor
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Position: activate to sort column ascending"
+                                                style="width: 248px;">Church Elders
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Office: activate to sort column ascending"
                                                 style="width: 114px;">Region
                                             </th>
@@ -86,11 +90,25 @@
                                                 <td class="sorting_1">{{$church->name}}</td>
                                                 <td>
                                                     @if($church->users->where('role','pastor')->isNotEmpty())
-                                                        {{$church->users->where('role','pastor')->first()->firstName}}
-                                                        {{$church->users->where('role','pastor')->first()->sirName}}
+                                                        <div class="font-weight-bold">{{$church->users->where('role','pastor')->first()->firstName}}
+                                                            {{$church->users->where('role','pastor')->first()->sirName}}</div>
+                                                        <div
+                                                            class="small">{{$church->users->where('role','pastor')->first()->mobile}}</div>
                                                     @else
                                                         <div class="alert alert-warning text-center">Not Assigned!</div>
                                                     @endif
+                                                </td>
+                                                <td>
+                                                    <ol>
+                                                        @forelse ($church->users->where('role','elder') as $elder)
+
+                                                            <li class="small">{{$elder->firstName}}
+                                                                {{$elder->sirName}}</li>
+                                                        @empty
+                                                            <div class="alert alert-warning text-center">Not Assigned!
+                                                            </div>
+                                                        @endforelse
+                                                    </ol>
                                                 </td>
                                                 <td>{{$church->region->region}}</td>
                                                 <td>{{date('d M Y', strtotime($church->created_at))}}</td>

@@ -16,6 +16,7 @@ class CreateFinancesTable extends Migration
         Schema::create('finances', function (Blueprint $table) {
             $table->id();
             $table->string('type');
+            $table->string('dividends');
             $table->timestamps();
         });
     }

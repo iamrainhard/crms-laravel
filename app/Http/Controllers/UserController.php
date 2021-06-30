@@ -73,7 +73,11 @@ class UserController extends Controller
             'password' => 'required|string|min:8|confirmed',
             'role' => 'required',
         ]);
-//        dd($request);
+
+        if($data['role'] === 'manager' || $data['role'] === 'admin'){
+            $data['church_id'] = null;
+        }
+
         User::create([
             'firstName' => $data['firstName'],
             'sirName' => $data['sirName'],

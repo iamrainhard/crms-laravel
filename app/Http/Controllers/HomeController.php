@@ -7,6 +7,7 @@ use App\Models\FinanceRecord;
 use App\Models\Region;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -55,11 +56,17 @@ class HomeController extends Controller
         $managers = $searchM->orderBy('firstName', 'ASC')->paginate(10);
 //        dd($managers);
         // For Pastor Dashboard
+        Carbon::setWeekStartsAt(Carbon::SUNDAY);
+        Carbon::setWeekEndsAt(Carbon::SATURDAY);
+
         $totalChurchMembers = User::where('church_id', $user->church_id)->where('role','member')->count();
         $totalChurchElders = User::where('church_id', $user->church_id)->where('role','elder')->count();
         $churchElders = User::where('church_id', $user->church_id)->where('role','elder')->orderBy('firstName', 'ASC')->paginate(10);
         $myPastor = User::where('church_id', $user->church_id)->where('role', 'pastor')->first();
-        $totalChurchCollection = FinanceRecord::where('church_id', $user->church_id)->sum('amount');
+        $yearlyCollection = FinanceRecord::whereYear('created_at', now()->year)->where('church_id', $user->church_id)->sum('amount');
+        $weeklyCollection = FinanceRecord::whereBetween('created_at',[now()->startOfWeek(), now()->endOfWeek()])->sum('amount');
+        $monthlyCollection = FinanceRecord::whereMonth('created_at',now()->month)->sum('amount');
+//        dd($monthlyCollection);
 
 
 
@@ -70,9 +77,9 @@ class HomeController extends Controller
         }elseif ($user->role === 'manager') {
             return view('manager.dashboard', compact('totalMembers','totalChurches','totalPastors','churchPercent','managers'));
         }elseif ($user->role === 'leader' || $user->role === 'pastor') {
-            return view('leader.dashboard', compact('totalChurchMembers', 'totalChurchElders','churchElders','totalChurchCollection'));
+            return view('leader.dashboard', compact('totalChurchMembers', 'totalChurchElders','churchElders','yearlyCollection','monthlyCollection','weeklyCollection'));
         }else{
-            return view('home',compact('totalChurchMembers','myPastor'));
+            return view('home',compact('totalChurchMembers','myPastor','yearlyCollection','monthlyCollection','weeklyCollection','churchElders'));
         }
 
     }

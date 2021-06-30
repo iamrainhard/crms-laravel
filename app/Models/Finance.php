@@ -10,7 +10,8 @@ class Finance extends Model
     use HasFactory;
 
     protected $fillable = [
-        'type'
+        'type',
+        'dividends'
     ];
 
     public function records()

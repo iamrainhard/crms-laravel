@@ -43,10 +43,12 @@ class FinanceController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'type' => 'required|string|max:255|min:3'
+            'type' => 'required|string|max:255|min:3',
+            'dividends' => 'required|numeric|between:0,100'
         ]);
         Finance::create([
             'type' => $data['type'],
+            'dividends' => $data['dividends']
         ]);
         return redirect('/finances')->with('status', 'Record Added Successful');
     }
@@ -84,7 +86,8 @@ class FinanceController extends Controller
     {
         $finance = Finance::findOrFail($id);
         $this->validate($request,[
-            'type' => 'required|string|max:255|min:3'
+            'type' => 'required|string|max:255|min:3',
+            'dividends' => 'required|numeric|between:0,100'
         ]);
         $finance->update($request->all());
         return redirect('/finances')->with('status', 'Record Updated Successful');

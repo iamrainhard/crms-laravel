@@ -1,14 +1,14 @@
 $(document).ready(function () {
-    $('#churchIdDiv').hide();
+    $('#church_id').html('');
+    // $('#churchIdDiv').hide();
     $('#region').hide();
 $("#role").on('change', function (){
     let role = this.value;
     // console.log(role);
     if (role === 'member' || role === 'pastor'|| role === 'elder'){
-        $('#churchIdDiv').show();
         $('#region').show();
     }else{
-        $('#churchIdDiv').hide();
+        $('#church_id').html('');
         $('#region').hide();
     }
 })
